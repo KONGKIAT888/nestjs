@@ -1,5 +1,6 @@
 import { CategoryController } from '@controllers/category.controller';
 import { ProductController } from '@controllers/product.controller';
+import { StaticController } from '@controllers/static.controller';
 import { Category } from '@entity/category.entity';
 import { Product } from '@entity/product.entity';
 import { Module } from '@nestjs/common';
@@ -30,7 +31,7 @@ import { ProductService } from '@services/product.service';
             Category
         ])
     ],
-    controllers: [ProductController, CategoryController],
+    controllers: [StaticController, ProductController, CategoryController],
     providers: [ProductService, CategoryService]
 })
 export class AppModule {
