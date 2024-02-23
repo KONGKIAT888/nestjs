@@ -5,9 +5,9 @@ import { NextFunction, Response } from 'express';
 export class StaticController {
 
     @Get('*')
-    async getAll(@Req() req: Request, @Res() res: Response, @Next() next: NextFunction) {
+    router(@Req() req: Request, @Res() res: Response, @Next() next: NextFunction) {
         if (!req.url.startsWith('/api')) {
-            res.sendFile('index.html', { root: 'build' });
+            res.sendFile('index.html', { root: 'client' });
         } else {
             next();
         }
