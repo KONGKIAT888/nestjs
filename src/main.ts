@@ -12,11 +12,16 @@ async function bootstrap() {
         AppModule,
         new ExpressAdapter(server)
     );
+    app.enableCors({
+        origin: false,
+        methods: ['GET', 'PUT', 'PATCH', 'POST', 'DELETE'],
+        allowedHeaders: ['Content-Type', 'Origin', 'X-Requested-With', 'Accept', 'Authorization']
+    });
     app.use(express.static(path.join('client')));
     await app.listen(Number(process.env.SERVER_PORT) || 3000);
 }
 
 void bootstrap().then(r => {
-    console.info(`Server is running on port ${process.env.SERVER_PORT} 🚀`);
-    console.info(`Server running as ${process.env.NODE_ENV} mode`);
+    console.log(`Server is running on port ${process.env.SERVER_PORT} 🚀`);
+    console.log(`Server running as ${process.env.NODE_ENV} mode`);
 });
